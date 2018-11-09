@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import OpenTextResponse from "./OpenTextResponse";
+import MultipleChoiceResponse from "./MultipleChoiceResponse";
 
 class Question extends Component {
   componentDidUpdate(newProps) {
@@ -28,6 +30,7 @@ class Question extends Component {
             <input type="checkbox" id="poor" name="poor" value="poor" />
             <label for="poor">poor</label>
           </div>
+          <MultipleChoiceResponse />
         </form>
       </div>
     );

@@ -1,34 +1,57 @@
 import React, { Component } from "react";
+import Question from "./Question";
+import Feedback from "./Feedback";
+import { Line, Circle } from "rc-progress";
 
 class Survey extends Component {
+  state = {
+    questions: [
+      {
+        text: "How are you feeling?",
+        type: "scale",
+      },
+      {
+        text: "How was your day?",
+        type: "scale",
+      },
+      {
+        text: "Third question?",
+        type: "scale",
+      },
+    ],
+    index: 0,
+  };
+
+  nextQuestion = () => {
+    this.setState(prevState => ({
+      index: prevState.index + 1,
+    }));
+  };
+
   render() {
+    let question = this.state.questions[this.state.index];
+
     return (
-      <div>
-        <head>
-          <title>Survey</title>
-        </head>
-        <body>
-          <p>How are you feeling today?</p>
+      <React.Fragment>
+        {this.state.index < this.state.questions.length ? (
           <div>
+            <Question text={question.text} type={question.type} />
             <input
-              type="radio"
-              id="verygood"
-              name="verygood"
-              value="verygood"
-            />
-            <label for="verygood">very good</label>
+              type="button"
+              id="submit"
+              onClick={this.nextQuestion}
+              value="Submit"
+            />{" "}
           </div>
-          <div>
-            <input type="radio" id="good" name="good" value="good" />
-            <label for="good">good</label>
-          </div>
-          <div>
-            <input type="radio" id="poor" name="poor" value="poor" />
-            <label for="poor">poor</label>
-          </div>
-          <input type="submit" />
-        </body>
-      </div>
+        ) : (
+          <Feedback />
+        )}
+        <Line
+          percent={(100 * this.state.index) / this.state.questions.length}
+          strokeWidth="1"
+          strokeColor="#2db7f5"
+        />
+      </React.Fragment>
     );
   }
 }

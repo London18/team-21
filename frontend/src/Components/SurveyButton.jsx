@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 const divStyle = {
   // color: "red",
@@ -15,7 +16,8 @@ const SurveyButton = props => {
 
   return (
     <div style={divStyle} onClick={handleClick}>
-      <p>{props.name}</p>
+      <Link to={`/survey`}>{props.name}</Link>
+      {/* <p>{props.name}</p> */}
     </div>
   );
 };

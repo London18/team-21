@@ -1,8 +1,12 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 
 class Login extends Component {
   state = { userid: "" };
-  handleSubmit = () => {};
+
+  handleSubmit = () => {
+    this.props.history.push("/");
+  };
 
   handleChange = event => {
     this.setState({ userid: event.target.value });
@@ -37,4 +41,4 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default withRouter(Login);

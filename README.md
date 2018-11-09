@@ -1,1 +1,1 @@
-Repo for Team 21 - we're currently tackling the Autastica Challenge at the 'J.P.Morgan - Code for Good' challenge.
+Repo for Team 21 - we're currently tackling the Autistica challenge at the 'J.P.Morgan - Code for Good' event.

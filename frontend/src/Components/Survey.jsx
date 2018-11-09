@@ -28,11 +28,28 @@ class Survey extends Component {
     }));
   };
 
+  finish = () => {
+    document.location.href = "/";
+  };
+
   render() {
     let question = this.state.questions[this.state.index];
 
     return (
       <React.Fragment>
+        {this.state.index < this.state.questions.length && (
+          <p style={{ textAlign: "center" }}>
+            Question {this.state.index + 1} of {this.state.questions.length}
+          </p>
+        )}
+        <div style={{ width: "80%", marginLeft: "auto", marginRight: "auto" }}>
+          <Line
+            percent={(100 * this.state.index) / this.state.questions.length}
+            strokeWidth="1.5"
+            trailWidth="1.5"
+            strokeColor="#2db7f5"
+          />
+        </div>
         {this.state.index < this.state.questions.length ? (
           <div>
             <Question text={question.text} type={question.type} />
@@ -44,13 +61,16 @@ class Survey extends Component {
             />{" "}
           </div>
         ) : (
-          <Feedback />
+          <div>
+            <Feedback />
+            <input
+              type="button"
+              id="submit"
+              onClick={this.finish}
+              value="Finished"
+            />
+          </div>
         )}
-        <Line
-          percent={(100 * this.state.index) / this.state.questions.length}
-          strokeWidth="1"
-          strokeColor="#2db7f5"
-        />
       </React.Fragment>
     );
   }

@@ -16,10 +16,7 @@ tests/coverage_html/
 tests/.coverage
 build/
 tests/report/
+autistica/__pycache__/
 autistica/autistica/__pycache__/
 autistica/surveys/__pycache__/
 autistica/surveys/migrations/__pycache__/
-<<<<<<< HEAD
-
-=======
->>>>>>> backnd

@@ -15,7 +15,7 @@ class Question extends Component {
     return (
       <div>
         <form id="questionForm" onChange={this.onSelect}>
-          <p className="display-4">{this.props.text}</p>
+          <p style={{fontSize: '24pt'}}>{this.props.text}</p>
           {this._getQuestionComponent(this.props.type)}
         </form>
       </div>

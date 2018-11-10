@@ -1,17 +1,19 @@
-import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import React from 'react';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
-import Survey from "./Components/Survey";
-import Login from "./Components/Login";
-import Dashboard from "./Components/Dashboard";
+import Survey from './Components/Survey';
+import Login from './Components/Login';
+import Dashboard from './Components/Dashboard';
+import Header from './Components/Header';
 
 const App = () => {
-  let loggedInBefore = localStorage.getItem("loggedIn");
-  let Home = loggedInBefore === "true" ? Dashboard : Login;
+  let loggedInBefore = localStorage.getItem('loggedIn');
+  let Home = loggedInBefore === 'true' ? Dashboard : Login;
   return (
     <Router>
-      <div>
-        <nav>
+      <React.Fragment>
+        <Header />
+        {/* <nav>
           <ul>
             <li>
               <Link to="/">Dashboard</Link>
@@ -23,12 +25,12 @@ const App = () => {
               <Link to="/survey/">Survey</Link>
             </li>
           </ul>
-        </nav>
+        </nav> */}
 
         <Route path="/" exact component={Home} />
         <Route path="/login/" exact component={Login} />
         <Route path="/survey/" component={Survey} />
-      </div>
+      </React.Fragment>
     </Router>
   );
 };

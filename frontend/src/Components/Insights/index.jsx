@@ -12,7 +12,7 @@ export default function index() {
       </p>
       <div className="d-flex flex-row">
         <BarGraph />
-        <AreaChart />
+        {/* <AreaChart /> */}
       </div>
     </div>
   );

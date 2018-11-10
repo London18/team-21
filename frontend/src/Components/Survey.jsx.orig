@@ -1,20 +1,20 @@
-import React, { Component } from 'react';
-import Question from './Question';
-import Feedback from './Feedback';
-import { Line, Circle } from 'rc-progress';
-const axios = require('axios');
+import React, { Component } from "react";
+import Question from "./Question";
+import Feedback from "./Feedback";
+import { Line, Circle } from "rc-progress";
+const axios = require("axios");
 
 class Survey extends Component {
   state = {
     questions: [],
     index: 0,
-    submitEnabled: false
+    submitEnabled: false,
   };
 
   componentDidMount() {
     let name = this.props.match.params.name;
     axios
-      .get('http://localhost:8000/surveys/' + name, { crossdomain: true })
+      .get("http://localhost:8000/surveys/" + name, { crossdomain: true })
       .then(response => {
         let data = JSON.parse(response.data);
         console.log(data);
@@ -23,7 +23,7 @@ class Survey extends Component {
             key: i,
             text: x.qtext,
             type: x.qtype,
-            id: x.id
+            id: x.id,
           };
         });
         this.setState({ questions: parsedData });
@@ -39,12 +39,12 @@ class Survey extends Component {
 
     //we send the current question answer to the server
     axios
-      .post('http://localhost:8000/surveys/' + this.props.match.params.name, {
+      .post("http://localhost:8000/surveys/" + this.props.match.params.name, {
         crossdomain: true,
         surveyTitle: this.props.match.params.name,
         answer: questionAnswer,
         type: this.state.questions[this.state.index].type,
-        questionId: this.state.questions[this.state.index].id
+        questionId: this.state.questions[this.state.index].id,
       })
       .then(function(response) {
         console.log(response);
@@ -54,19 +54,19 @@ class Survey extends Component {
       });
     this.setState(prevState => ({
       index: prevState.index + 1,
-      submitEnabled: false
+      submitEnabled: false,
     }));
   };
 
   finish = () => {
-    document.location.href = '/';
+    document.location.href = "/";
   };
 
   render() {
     return (
       <React.Fragment>
         {this.state.index < this.state.questions.length && (
-          <p style={{ textAlign: 'center' }} className="display-3">
+          <p style={{ textAlign: "center" }} className="display-3">
             Question {this.state.index + 1} of {this.state.questions.length}
           </p>
         )}
@@ -81,7 +81,7 @@ class Survey extends Component {
   renderProgressBar = () => {
     return (
       <div>
-        <div style={{ width: '80%', marginLeft: 'auto', marginRight: 'auto' }}>
+        <div style={{ width: "80%", marginLeft: "auto", marginRight: "auto" }}>
           <Line
             percent={(100 * this.state.index) / this.state.questions.length}
             strokeWidth="1.5"
@@ -105,6 +105,7 @@ class Survey extends Component {
           onValidInput={this.handleQuestioninput(true)}
           onInvalidInput={this.handleQuestioninput(false)}
         />
+<<<<<<< HEAD
         <input
           type="button"
           className="btn btn-success"
@@ -112,7 +113,10 @@ class Survey extends Component {
           onClick={this.nextQuestion}
           value="Submit"
           disabled={!this.state.submitEnabled}
-        />{' '}
+        />{" "}
+=======
+        {this.renderSubmit()}
+>>>>>>> ac04194c480c9fcc1de7c8dd79da4ee477dd6ac4
       </div>
     );
   };
@@ -131,14 +135,14 @@ class Survey extends Component {
 
   handleQuestioninput = valid => () => {
     this.setState({
-      submitEnabled: valid
+      submitEnabled: valid,
     });
   };
 
   renderFeedback = () => {
     return (
       <div>
-        <img src="../images/sss.png" style={{ height: '60px' }} />
+        <img src="../images/sss.png" style={{ height: "60px" }} />
         <Feedback />
         <input
           type="button"

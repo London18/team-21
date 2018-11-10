@@ -1,30 +1,14 @@
-import React, { Component } from 'react';
-import SurveyButton from './SurveyButton';
-const axios = require('axios');
+import React, { Component } from "react";
+import SurveyButton from "./SurveyButton";
+const axios = require("axios");
 
 class Dashboard extends Component {
   state = {
-    surveys: []
+    surveys: [],
   };
 
-  componentDidMount() {
-    axios
-      .get('http://localhost:8000/surveys/', { crossdomain: true })
-      .then(response => {
-        let data = JSON.parse(response.data);
-        console.log(data);
-        this.setState({
-          surveys: data.map((x, i) => {
-            return {
-              key: i,
-              title: x.title
-            };
-          })
-        });
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
+  constructor(props) {
+    super(props);
   }
 
   render() {
@@ -34,7 +18,51 @@ class Dashboard extends Component {
           <title>Dashboard</title>
         </head>
         <body>
-          <h2 className="display-3">Welcome, John Doe!</h2>
+          <p>You have surveys to fill in:</p>
+          <div>
+            {this.state.surveys.map((item, index) => (
+              <SurveyButton name={item.title} />
+            ))}
+          </div>
+        </body>
+      </div>
+    );
+  }
+
+  componentDidMount() {
+    axios
+      .get("http://localhost:8000/surveys/", { crossdomain: true })
+      .then(response => {
+        let data = JSON.parse(response.data);
+        console.log(data);
+        this.setState({
+          surveys: data.map((x, i) => {
+            return {
+              key: i,
+              title: x.title,
+            };
+          }),
+        });
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
+  }
+<<<<<<< HEAD
+
+  state = {
+    surveys: [],
+  };
+
+  render() {
+    return (
+      <div className="content centered">
+        <head>
+          <title>Dashboard</title>
+        </head>
+        <body>
+
+        <h2 className="display-3">Welcome, John Doe!</h2>
           <p>You have surveys to fill in:</p>
           <div className="d-flex flex-row justify-content-around">
             {this.state.surveys.map((item, index) => (
@@ -45,6 +73,8 @@ class Dashboard extends Component {
       </div>
     );
   }
+=======
+>>>>>>> 568be0ffb0a4fef5c6dac73b08e257d347af71a2
 }
 
 export default Dashboard;

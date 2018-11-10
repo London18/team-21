@@ -9,9 +9,13 @@ class OpenTextResponse extends React.Component {
       this.props.onInvalidInput();
     }
   };
+  get() {
+    return document.getElementById("opentextinput").value;
+  }
   render() {
     return (
       <textarea
+        id="opentextinput"
         type="text"
         placeholder="Enter text..."
         style={{ height: "100pt" }}

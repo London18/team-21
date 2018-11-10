@@ -12,16 +12,15 @@ class Login extends Component {
         </head>
         <body>
           <p>
-            <h1> Welcome to Autistica Surveys! Please enter your user id:</h1>
+            <h1> Welcome to Autistica Surveys! Please enter your User ID:</h1>
           </p>
           <p>
             <form onSubmit={this.handleSubmit}>
               <label>
-                user ID:
                 <input
                   type="text"
                   value={this.state.userid}
-                  onChange={this.handleChange}
+                  onChange={this.handleUserIdChange}
                 />
               </label>
               <input type="submit" value="Submit" />
@@ -32,7 +31,7 @@ class Login extends Component {
                 checked={this.state.remember}
                 onChange={this.handleRememberChange}
               />{' '}
-              <h3>Remember me</h3>
+              Remember me
             </form>
           </p>
         </body>

@@ -8,9 +8,9 @@ const SurveyButton = props => {
 
   return (
     <React.Fragment>
-      <div className="p2 flex-item" onClick={handleClick}>
+      <div className="p2 flex-item" onClick={handleClick} >
         <Link to={`/survey/` + props.name}>
-          <button type="button" className="btn btn-success btn-lg">
+          <button type="button" className="btn btn-success btn-lg" style={{width:'200pt'}}>
             {props.name}
           </button>
         </Link>

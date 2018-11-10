@@ -26,7 +26,7 @@ class ScaleResponse extends React.Component {
             name="scale"
             value="na"
           />
-          <label htmlFor="na">strongly disagree </label>
+          <label htmlFor="na"> &nbsp; strongly disagree </label>
         </div>
         <div>
           <input
@@ -36,7 +36,7 @@ class ScaleResponse extends React.Component {
             onClick={this.onSelect}
             value="some"
           />
-          <label htmlFor="some">disagree</label>
+          <label htmlFor="some"> &nbsp; disagree</label>
         </div>
         <div>
           <input
@@ -46,7 +46,7 @@ class ScaleResponse extends React.Component {
             onClick={this.onSelect}
             value="considerable"
           />
-          <label htmlFor="considerable">agree</label>
+          <label htmlFor="considerable"> &nbsp; agree</label>
         </div>
         <div>
           <input
@@ -56,7 +56,7 @@ class ScaleResponse extends React.Component {
             name="scale"
             value="most"
           />
-          <label htmlFor="most">strongly agree</label>
+          <label htmlFor="most"> &nbsp; strongly agree</label>
         </div>
       </div>
     );

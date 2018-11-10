@@ -5,11 +5,10 @@ class Feedback extends React.Component {
     return (
       <div>
         <p className="display-3">Thank you!</p>
-        <p className="display-4">
-          You've contributed x hours to autism research. You've helped us to
+        <p style={{fontSize:'20px'}}>
+          A minute of your time is worth hours of autism research work. By filling out these surveys, you're helping us to
           improve the lives of people with autism all around the world.{" "}
         </p>
-        <b className="display-4">You've earned 50 points</b>
       </div>
     );
   }

@@ -8,12 +8,12 @@ class Dashboard extends Component {
 
   render() {
     return (
-      <div>
+      <div className="content centered">
         <head>
           <title>Dashboard</title>
         </head>
         <body>
-          <p>You have surveys to fill in</p>
+          <p>You have surveys to fill in:</p>
           <div>
             {this.state.surveys.map((item, index) => (
               <SurveyButton name={item.name} />

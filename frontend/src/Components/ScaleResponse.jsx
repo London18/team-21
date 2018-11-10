@@ -5,7 +5,7 @@ const ScaleResponse = props => {
     props.onValidInput();
   };
   return (
-    <div>
+    <div className="left">
       <div>
         <input
           type="radio"
@@ -14,7 +14,7 @@ const ScaleResponse = props => {
           name="scale"
           value="na"
         />
-        <label htmlFor="na">strongly disagree</label>
+        <label htmlFor="na">strongly disagree </label>
       </div>
       <div>
         <input

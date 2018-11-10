@@ -6,7 +6,7 @@ class MultipleChoiceResponse extends React.Component {
       this.props.onValidInput();
     };
     return (
-      <div>
+      <div className="left">
         <div>
           <input
             onClick={onSelect}

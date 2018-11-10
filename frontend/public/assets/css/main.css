@@ -1,10 +1,10 @@
+.left {
+text-align:left;
+margin-left: 10%;
+}
+
 .centered {
-  display: flex;
-  flex-direction:column;
-  /*min-height:50vh;*/
-  
-  align-items: center;
-  text-align:center;
+text-align:center;
 }
 
 /* The side navigation menu */

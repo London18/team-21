@@ -36,7 +36,7 @@ class Survey extends Component {
   nextQuestion = response => {
     let questionAnswer = this.questionComponent.getAnswer();
 
-    console.log(localStorage.getItem("numberOfStars"))
+    console.log(localStorage.getItem("numberOfStars"));
 
     if (this.state.index >= this.state.questions.length - 1) {
       localStorage.setItem(
@@ -52,6 +52,7 @@ class Survey extends Component {
         answer: questionAnswer,
         type: this.state.questions[this.state.index].type,
         questionId: this.state.questions[this.state.index].id,
+        userid: localStorage.setItem("userID"),
       })
       .then(function(response) {
         console.log(response);
@@ -83,7 +84,7 @@ class Survey extends Component {
           filledStars={localStorage.getItem("numberOfStars")}
         />
         {this.state.index < this.state.questions.length && (
-          <p style={{ textAlign: "center" }} >
+          <p style={{ textAlign: "center" }}>
             Question {this.state.index + 1} of {this.state.questions.length}
           </p>
         )}

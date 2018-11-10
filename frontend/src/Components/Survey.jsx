@@ -52,7 +52,7 @@ class Survey extends Component {
         answer: questionAnswer,
         type: this.state.questions[this.state.index].type,
         questionId: this.state.questions[this.state.index].id,
-        userid: localStorage.setItem("userID"),
+        userid: localStorage.getItem("userID"),
       })
       .then(function(response) {
         console.log(response);

@@ -16,7 +16,7 @@ const SurveyButton = props => {
 
   return (
     <div style={divStyle} onClick={handleClick}>
-      <Link to={`/survey`}>{props.name}</Link>
+      <Link to={`/survey/` + props.name}>{props.name}</Link>
       {/* <p>{props.name}</p> */}
     </div>
   );

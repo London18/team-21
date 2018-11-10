@@ -12,19 +12,33 @@ class Survey extends Component {
       },
       {
         text: "How was your day?",
-        type: "multipleChoice",
+        type: "openText",
       },
       {
         text: "Third question?",
         type: "scale",
       },
+      {
+        text: "Fourth question",
+        type: "scale",
+      },
+      {
+        text: "Fifth question?",
+        type: "multipleChoice",
+      },
+      {
+        text: "Sixth question",
+        type: "multipleChoice",
+      },
     ],
     index: 0,
+    submitEnabled: false,
   };
 
   nextQuestion = () => {
     this.setState(prevState => ({
       index: prevState.index + 1,
+      submitEnabled: false,
     }));
   };
 
@@ -65,15 +79,27 @@ class Survey extends Component {
     let question = this.state.questions[this.state.index];
     return (
       <div>
-        <Question text={question.text} type={question.type} />
+        <Question
+          text={question.text}
+          type={question.type}
+          onValidInput={this.handleQuestioninput(true)}
+          onInvalidInput={this.handleQuestioninput(false)}
+        />
         <input
           type="button"
           id="submitSurvey"
           onClick={this.nextQuestion}
           value="Submit"
+          disabled={!this.state.submitEnabled}
         />{" "}
       </div>
     );
+  };
+
+  handleQuestioninput = valid => () => {
+    this.setState({
+      submitEnabled: valid,
+    });
   };
 
   renderFeedback = () => {

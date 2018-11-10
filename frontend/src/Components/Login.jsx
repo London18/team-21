@@ -4,25 +4,6 @@ import { withRouter, Link } from "react-router-dom";
 class Login extends Component {
   state = { userid: "", remember: false };
 
-  handleRememberChange = () => {
-    this.setState({
-      remember: !this.state.remember,
-    });
-  };
-
-  handleSubmit = () => {
-    if (this.state.remember) {
-      localStorage.setItem("loggedIn", true);
-    } else {
-      sessionStorage.setItem("loggedIn", true);
-    }
-    this.props.history.push("/");
-  };
-
-  handleChange = event => {
-    this.setState({ userid: event.target.value });
-  };
-
   render() {
     return (
       <div>
@@ -56,7 +37,7 @@ class Login extends Component {
                 <input
                   type="text"
                   value={this.state.userid}
-                  onChange={this.handleChange}
+                  onChange={this.handleUserIdChange}
                 />
               </label>
               <input type="submit" value="Submit" />
@@ -81,6 +62,7 @@ class Login extends Component {
       </div>
     );
   }
+
   renderNoExistingId() {
     return (
       <div>
@@ -91,6 +73,25 @@ class Login extends Component {
       </div>
     );
   }
+
+  handleRememberChange = () => {
+    this.setState({
+      remember: !this.state.remember,
+    });
+  };
+
+  handleSubmit = () => {
+    if (this.state.remember) {
+      localStorage.setItem("loggedIn", true);
+    } else {
+      sessionStorage.setItem("loggedIn", true);
+    }
+    this.props.history.push("/");
+  };
+
+  handleUserIdChange = event => {
+    this.setState({ userid: event.target.value });
+  };
 }
 
 export default withRouter(Login);

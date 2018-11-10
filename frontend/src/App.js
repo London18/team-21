@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import Survey from "./Components/Survey";
 import Login from "./Components/Login";
@@ -9,8 +9,7 @@ import Tree from "./Components/Tree";
 import PersonalInfo from "./Components/PersonalInfo";
 
 const App = () => {
-  let loggedInBefore =
-    localStorage.getItem("loggedIn") || sessionStorage.getItem("loggedIn");
+  let loggedInBefore = getLoggedInStatus();
   let Home = loggedInBefore === "true" ? Dashboard : Login;
   return (
     <Router>
@@ -32,6 +31,12 @@ const App = () => {
       </React.Fragment>
     </Router>
   );
+};
+
+const getLoggedInStatus = () => {
+  let rememberedLogIn = localStorage.getItem("loggedIn");
+  let sessionLoggedIn = sessionStorage.getItem("loggedIn");
+  return rememberedLogIn || sessionLoggedIn;
 };
 
 export default App;

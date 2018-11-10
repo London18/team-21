@@ -1,13 +1,13 @@
-import React from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import React from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-import Survey from "./Components/Survey";
-import Login from "./Components/Login";
-import Dashboard from "./Components/Dashboard";
-import Header from "./Components/Header";
-import Tree from "./Components/Tree";
-import PersonalInfo from "./Components/PersonalInfo";
-import Insights from "./Components/Insights";
+import Survey from './Components/Survey';
+import Login from './Components/Login';
+import Dashboard from './Components/Dashboard';
+import Header from './Components/Header';
+import Tree from './Components/Tree';
+import PersonalInfo from './Components/PersonalInfo';
+import Insights from './Components/Insights';
 
 const App = () => {
   let loggedInBefore = getLoggedInStatus();
@@ -27,7 +27,7 @@ const App = () => {
           <Route path="/insights/" component={Insights} />
           <Route path="/survey/:name" component={Survey} />
           <Route path="/registernoid/" component={PersonalInfo} />
-          <Route path="/tree/" component={Tree} />
+          <Route path="/garden/" component={Tree} />
         </div>
       </React.Fragment>
     </Router>
@@ -35,8 +35,8 @@ const App = () => {
 };
 
 const getLoggedInStatus = () => {
-  let rememberedLogIn = localStorage.getItem("loggedIn");
-  let sessionLoggedIn = sessionStorage.getItem("loggedIn");
+  let rememberedLogIn = localStorage.getItem('loggedIn');
+  let sessionLoggedIn = sessionStorage.getItem('loggedIn');
   return rememberedLogIn || sessionLoggedIn;
 };
 

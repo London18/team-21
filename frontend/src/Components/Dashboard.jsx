@@ -1,12 +1,12 @@
-import React, { Component } from "react";
-import SurveyButton from "./SurveyButton";
-const axios = require("axios");
+import React, { Component } from 'react';
+import SurveyButton from './SurveyButton';
+const axios = require('axios');
 
-const SURVEYS_URL = "http://localhost:8000/surveys/";
+const SURVEYS_URL = 'http://localhost:8000/surveys/';
 
 class Dashboard extends Component {
   state = {
-    surveys: [],
+    surveys: []
   };
 
   render() {
@@ -34,9 +34,9 @@ class Dashboard extends Component {
           surveys: data.map((x, i) => {
             return {
               key: i,
-              title: x.title,
+              title: x.title
             };
-          }),
+          })
         });
       })
       .catch(function(error) {

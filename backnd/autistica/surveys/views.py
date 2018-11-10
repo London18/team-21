@@ -29,13 +29,14 @@ def survey_questions(request, forSurvey='all'):
         resp = None
         survey_q = None
         try:
-            usr = User.objects.get(username=user_name)
+            usr = User.objects.get(name=user_name)
+            resp = Response.objects.get(r_text=rsp)
             survey_q = SurveyQuestions.objects.filter(survey__title=surveyT, question=qid)[0]
         except:
             usr = User.objects.all()[0]
             survey_q = SurveyQuestions.objects.filter(survey__title=surveyT, question=qid)[0]
 
-        userData = UserSurvey.objects.create(user=usr, survey_question=survey_q, response=rsp)
+        userData = UserSurvey.objects.create(user=usr, s_q=survey_q, r_text=resp)
         userData.save()
 
         return HttpResponse("Working")
@@ -76,8 +77,8 @@ def fetchQuestions(forSurvey='all'):
     for data in query:
         objList.append({
             'id': data.question.id,
-            'qtext': data.question.question_text,
-            'qtype': data.question.qtype,
+            'qtext': data.question.q_text,
+            'qtype': data.question.q_type,
             })
 
     json_query = json.dumps(objList)

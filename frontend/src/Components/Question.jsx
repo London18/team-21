@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 
 const typeToResponseComponentMap = {
   openText: <OpenTextResponse />,
-  multipleChioce: <MultipleChoiceResponse />,
+  multipleChoice: <MultipleChoiceResponse />,
   scale: <ScaleResponse />,
 };
 

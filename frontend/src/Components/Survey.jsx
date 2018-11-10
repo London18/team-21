@@ -60,6 +60,11 @@ class Survey extends Component {
         console.log(error);
       });
 
+    localStorage.setItem(
+      "numberOfQuestions",
+      parseInt(localStorage.getItem("numberOfQuestions")) + 1,
+    );
+
     this.setState(prevState => ({
       index: prevState.index + 1,
       submitEnabled: false,

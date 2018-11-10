@@ -15,6 +15,9 @@ const App = () => {
   if (isNaN(parseInt(localStorage.getItem("numberOfStars")))) {
     localStorage.setItem("numberOfStars", "0");
   }
+  if (parseInt(localStorage.getItem("numberOfStars"))) {
+    localStorage.setItem("numberOfQuestions", "0");
+  }
   return (
     <Router>
       <React.Fragment>

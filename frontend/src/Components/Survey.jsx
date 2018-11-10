@@ -33,8 +33,6 @@ class Survey extends Component {
   };
 
   render() {
-    let question = this.state.questions[this.state.index];
-
     return (
       <React.Fragment>
         {this.state.index < this.state.questions.length && (
@@ -42,38 +40,55 @@ class Survey extends Component {
             Question {this.state.index + 1} of {this.state.questions.length}
           </p>
         )}
-        <div style={{ width: "80%", marginLeft: "auto", marginRight: "auto" }}>
-          <Line
-            percent={(100 * this.state.index) / this.state.questions.length}
-            strokeWidth="1.5"
-            trailWidth="1.5"
-            strokeColor="#2db7f5"
-          />
-        </div>
-        {this.state.index < this.state.questions.length ? (
-          <div>
-            <Question text={question.text} type={question.type} />
-            <input
-              type="button"
-              id="submit"
-              onClick={this.nextQuestion}
-              value="Submit"
-            />{" "}
-          </div>
-        ) : (
-          <div>
-            <Feedback />
-            <input
-              type="button"
-              id="submit"
-              onClick={this.finish}
-              value="Finished"
-            />
-          </div>
-        )}
+        {this.renderProgressBar()}
+        {this.state.index < this.state.questions.length
+          ? this.renderQuestion()
+          : this.renderFeedback()}
       </React.Fragment>
     );
   }
+
+  renderProgressBar = () => {
+    return (
+      <div style={{ width: "80%", marginLeft: "auto", marginRight: "auto" }}>
+        <Line
+          percent={(100 * this.state.index) / this.state.questions.length}
+          strokeWidth="1.5"
+          trailWidth="1.5"
+          strokeColor="#2db7f5"
+        />
+      </div>
+    );
+  };
+
+  renderQuestion = () => {
+    let question = this.state.questions[this.state.index];
+    return (
+      <div>
+        <Question text={question.text} type={question.type} />
+        <input
+          type="button"
+          id="submit"
+          onClick={this.nextQuestion}
+          value="Submit"
+        />{" "}
+      </div>
+    );
+  };
+
+  renderFeedback = () => {
+    return (
+      <div>
+        <Feedback />
+        <input
+          type="button"
+          id="submit"
+          onClick={this.finish}
+          value="Finished"
+        />
+      </div>
+    );
+  };
 }
 
 export default Survey;

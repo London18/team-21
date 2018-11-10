@@ -12,6 +12,9 @@ const App = () => {
   let loggedInBefore =
     localStorage.getItem("loggedIn") || sessionStorage.getItem("loggedIn");
   let Home = loggedInBefore === "true" ? Dashboard : Login;
+  if (localStorage.getItem("numberOfStars") == undefined) {
+    localStorage.setItem("numberOfStars", "0");
+  }
   return (
     <Router>
       <React.Fragment>

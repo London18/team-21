@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Question from "./Question";
 import Feedback from "./Feedback";
 import { Line, Circle } from "rc-progress";
+import StarRow from "./StarRow";
 const axios = require("axios");
 
 class Survey extends Component {
@@ -36,7 +37,12 @@ class Survey extends Component {
   nextQuestion = response => {
     console.log(this.questionComponent.get());
     let questionAnswer = this.questionComponent.get();
-
+    if (this.state.index >= this.state.questions.length - 1) {
+      localStorage.setItem(
+        "numberOfStars",
+        parseInt(localStorage.getItem("numberOfStars")) + 1,
+      );
+    }
     //we send the current question answer to the server
     axios
       .post("http://localhost:8000/surveys/" + this.props.match.params.name, {
@@ -52,6 +58,7 @@ class Survey extends Component {
       .catch(function(error) {
         console.log(error);
       });
+
     this.setState(prevState => ({
       index: prevState.index + 1,
       submitEnabled: false,
@@ -65,6 +72,10 @@ class Survey extends Component {
   render() {
     return (
       <React.Fragment>
+        <StarRow
+          totalStars="3"
+          filledStars={localStorage.getItem("numberOfStars")}
+        />
         {this.state.index < this.state.questions.length && (
           <p style={{ textAlign: "center" }}>
             Question {this.state.index + 1} of {this.state.questions.length}

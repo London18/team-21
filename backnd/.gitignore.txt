@@ -17,3 +17,5 @@ tests/.coverage
 build/
 tests/report/
 autistica/autistica/__pycache__/
+autistica/surveys/__pycache__/
+autistica/surveys/migrations/__pycache__/

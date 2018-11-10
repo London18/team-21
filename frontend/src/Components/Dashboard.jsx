@@ -1,49 +1,47 @@
-import React, { Component } from 'react';
-import SurveyButton from './SurveyButton';
-const axios = require('axios');
+import React, { Component } from "react";
+import SurveyButton from "./SurveyButton";
+const axios = require("axios");
+
+const SURVEYS_URL = "http://localhost:8000/surveys/";
 
 class Dashboard extends Component {
   state = {
-    surveys: []
+    surveys: [],
   };
-
-  componentDidMount() {
-    axios
-      .get('http://localhost:8000/surveys/', { crossdomain: true })
-      .then(response => {
-        let data = JSON.parse(response.data);
-        console.log(data);
-        this.setState({
-          surveys: data.map((x, i) => {
-            return {
-              key: i,
-              title: x.title
-            };
-          })
-        });
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
-  }
 
   render() {
     return (
       <div className="content centered">
-        <head>
-          <title>Dashboard</title>
-        </head>
         <body>
           <h2 className="display-3">Welcome, John Doe!</h2>
           <p>You have surveys to fill in:</p>
           <div className="d-flex flex-row justify-content-around">
-            {this.state.surveys.map((item, index) => (
+            {this.state.surveys.map(item => (
               <SurveyButton name={item.title} />
             ))}
           </div>
         </body>
       </div>
     );
+  }
+
+  componentDidMount() {
+    axios
+      .get(SURVEYS_URL, { crossdomain: true })
+      .then(response => {
+        let data = JSON.parse(response.data);
+        this.setState({
+          surveys: data.map((x, i) => {
+            return {
+              key: i,
+              title: x.title,
+            };
+          }),
+        });
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
   }
 }
 

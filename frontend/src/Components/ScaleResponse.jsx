@@ -1,15 +1,15 @@
-import React, { Component } from 'react';
+import React from "react";
 
 class ScaleResponse extends React.Component {
   onSelect = () => {
     this.props.onValidInput();
   };
   get = () => {
-    if (document.getElementById('na').checked) {
+    if (document.getElementById("na").checked) {
       return 0;
-    } else if (document.getElementById('some').checked) {
+    } else if (document.getElementById("some").checked) {
       return 1;
-    } else if (document.getElementById('considerable').checked) {
+    } else if (document.getElementById("considerable").checked) {
       return 2;
     } else {
       return 3;

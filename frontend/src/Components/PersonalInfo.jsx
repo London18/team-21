@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 
 class PersonalInfo extends React.Component {
   render() {

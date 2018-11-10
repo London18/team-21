@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 
 class OpenTextResponse extends React.Component {
   handleTextChange = event => {

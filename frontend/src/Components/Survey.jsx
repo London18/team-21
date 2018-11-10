@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Question from "./Question";
 import Feedback from "./Feedback";
-import { Line, Circle } from "rc-progress";
+import { Line } from "rc-progress";
 import StarRow from "./StarRow";
 const axios = require("axios");
 
@@ -18,7 +18,6 @@ class Survey extends Component {
       .get("http://localhost:8000/surveys/" + name, { crossdomain: true })
       .then(response => {
         let data = JSON.parse(response.data);
-        console.log(data);
         let parsedData = data.map((x, i) => {
           return {
             key: i,
@@ -35,8 +34,8 @@ class Survey extends Component {
   }
 
   nextQuestion = response => {
-    console.log(this.questionComponent.get());
-    let questionAnswer = this.questionComponent.get();
+    let questionAnswer = this.questionComponent.getAnswer();
+
     if (this.state.index >= this.state.questions.length - 1) {
       localStorage.setItem(
         "numberOfStars",
@@ -149,7 +148,7 @@ class Survey extends Component {
   renderFeedback = () => {
     return (
       <div>
-        <img src="../images/sss.png" style={{ height: "60px" }} />
+        <img src="../images/sss.png" alt="star" style={{ height: "60px" }} />
         <Feedback />
         <input
           type="button"

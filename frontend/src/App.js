@@ -10,10 +10,9 @@ import PersonalInfo from "./Components/PersonalInfo";
 import Insights from "./Components/Insights";
 
 const App = () => {
-  let loggedInBefore =
-    localStorage.getItem("loggedIn") || sessionStorage.getItem("loggedIn");
+  let loggedInBefore = getLoggedInStatus();
   let Home = loggedInBefore === "true" ? Dashboard : Login;
-  if (localStorage.getItem("numberOfStars") == undefined) {
+  if (localStorage.getItem("numberOfStars") === undefined) {
     localStorage.setItem("numberOfStars", "0");
   }
   return (

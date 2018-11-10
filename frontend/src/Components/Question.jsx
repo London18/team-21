@@ -6,21 +6,23 @@ import PropTypes from "prop-types";
 
 const typeToResponseComponentMap = {
   open_text: OpenTextResponse,
-  multipleChoice: MultipleChoiceResponse,
+  multiple_choice: MultipleChoiceResponse,
   scale: ScaleResponse,
 };
 
 class Question extends Component {
-  constructor(props) {
-    super(props);
+  render() {
+    return (
+      <div>
+        <form id="questionForm" onChange={this.onSelect}>
+          <p>{this.props.text}</p>
+          {this._getQuestionComponent(this.props.type)}
+        </form>
+      </div>
+    );
   }
 
-  get = () => {
-    return this.responseComponent.get();
-  };
-
   componentDidUpdate(prevProps) {
-    console.log(prevProps.id);
     if (this.props.id !== prevProps.id) {
       document.getElementById("questionForm").reset();
     }
@@ -30,23 +32,16 @@ class Question extends Component {
     if (this.props.type !== "openText") this.props.onValidInput();
   };
 
-  render() {
-    return (
-      <div>
-        <form id="questionForm" onChange={this.onSelect}>
-          <p className="display-4">{this.props.text}</p>
-          {this.getQuestionComponent(this.props.type)}
-        </form>
-      </div>
-    );
-  }
-
-  getQuestionComponent = type => {
+  _getQuestionComponent = type => {
     return React.createElement(typeToResponseComponentMap[type], {
       ref: r => (this.responseComponent = r),
       onValidInput: this.props.onValidInput,
       onInvalidInput: this.props.onInvalidInput,
     });
+  };
+
+  getAnswer = () => {
+    return this.responseComponent.get();
   };
 }
 

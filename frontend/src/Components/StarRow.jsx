@@ -14,15 +14,15 @@ class StarRow extends React.Component {
         <div>
           {starValues.map(item => {
             if (item) {
-              return <img src="../images/filledStar.png" />;
+              return <img src="../images/filledStar.png" alt="filled star" />;
             } else {
-              return <img src="../images/star.png" />;
+              return <img src="../images/star.png" alt="unfilled star" />;
             }
           })}
         </div>
       );
     } else {
-      return <a>Set a goal</a>;
+      return <p>Set a goal</p>;
     }
   }
 }

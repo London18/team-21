@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
 const SurveyButton = props => {
   const handleClick = () => {
-    console.log('survey ' + props.name + ' clicked');
+    console.log("survey " + props.name + " clicked");
   };
 
   return (

@@ -5,31 +5,25 @@ class ScaleResponse extends React.Component {
     return (
       <div>
         <div>
-          <input type="checkbox" id="na" name="na" value="na" />
-          <label htmlFor="na">Did not apply to me at all</label>
+          <input type="radio" id="na" name="scale" value="na" />
+          <label htmlFor="na">strongly disagree</label>
         </div>
         <div>
-          <input type="checkbox" id="some" name="some" value="some" />
-          <label htmlFor="some">
-            Applied to me to some degree, or some of the time
-          </label>
+          <input type="radio" id="some" name="scale" value="some" />
+          <label htmlFor="some">disagree</label>
         </div>
         <div>
           <input
-            type="checkbox"
+            type="radio"
             id="considerable"
-            name="considerable"
+            name="scale"
             value="considerable"
           />
-          <label htmlFor="considerable">
-            Applied to me a considerable degree or a good part of time
-          </label>
+          <label htmlFor="considerable">agree</label>
         </div>
         <div>
-          <input type="checkbox" id="most" name="most" value="most" />
-          <label htmlFor="most">
-            Applied to me very much or most of the time
-          </label>
+          <input type="radio" id="most" name="scale" value="most" />
+          <label htmlFor="most">strongly agree</label>
         </div>
       </div>
     );

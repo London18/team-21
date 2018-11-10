@@ -68,7 +68,7 @@ class Survey extends Component {
         <Question text={question.text} type={question.type} />
         <input
           type="button"
-          id="submit"
+          id="submitSurvey"
           onClick={this.nextQuestion}
           value="Submit"
         />{" "}

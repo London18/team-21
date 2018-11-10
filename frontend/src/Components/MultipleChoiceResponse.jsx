@@ -1,6 +1,15 @@
 import React, { Component } from "react";
 
 class MultipleChoiceResponse extends React.Component {
+  get = () => {
+    if (document.getElementById("yesBox").checked) {
+      return "yes";
+    } else if (document.getElementById("noBox").checked) {
+      return "no";
+    } else {
+      return "not applicable";
+    }
+  };
   render() {
     const onSelect = () => {
       this.props.onValidInput();

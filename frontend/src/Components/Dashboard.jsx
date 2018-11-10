@@ -43,7 +43,6 @@ class Dashboard extends Component {
           <div className="d-flex flex-row justify-content-around">
             {this.state.surveys.map((item, index) => (
               <SurveyButton name={item.title} />
-              // <p>{item}</p>
             ))}
           </div>
         </body>

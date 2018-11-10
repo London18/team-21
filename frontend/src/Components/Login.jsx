@@ -28,14 +28,11 @@ class Login extends Component {
           <title>Login</title>
         </head>
         <body>
-          <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Saepe, ex
-            alias eos atque, quasi est fuga commodi dolorem mollitia hic numquam
-            debitis blanditiis natus a. Quidem in debitis at earum.
-          </p>
+         <p>
+         Welcome to Autistica Surveys! Please enter your user id:</p><p>
           <form onSubmit={this.handleSubmit}>
             <label>
-              Your ID:
+              user ID:
               <input
                 type="text"
                 value={this.state.userid}
@@ -43,14 +40,14 @@ class Login extends Component {
               />
             </label>
             <input type="submit" value="Submit" />
-
-            <input
-              name="remember"
-              type="checkbox"
-              checked={this.state.remember}
-              onChange={this.handleRememberChange}
-            />
-          </form>
+            <p> </p>
+              <input
+                name="remember"
+                type="checkbox"
+                checked={this.state.remember}
+                onChange={this.handleRememberChange}
+              /> Remember me
+          </form></p>
         </body>
       </div>
     );

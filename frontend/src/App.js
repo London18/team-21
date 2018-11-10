@@ -26,7 +26,9 @@ const App = () => {
             </li>
           </ul>
         </nav> */}
-        <div className="content">
+        <div className="content centered">
+          <br/>
+          <br/>
           <Route path="/" exact component={Home} />
           <Route path="/login/" exact component={Login} />
           <Route path="/survey/" component={Survey} />

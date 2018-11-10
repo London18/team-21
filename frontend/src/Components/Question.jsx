@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import OpenTextResponse from "./OpenTextResponse";
 import MultipleChoiceResponse from "./MultipleChoiceResponse";
+import PropTypes from "prop-types";
 
 const typeToComponentsMap = {
   openText: <OpenTextResponse />,
@@ -43,5 +44,9 @@ class Question extends Component {
     });
   };
 }
+
+Question.propTypes = {
+  type: PropTypes.string.isRequired,
+};
 
 export default Question;

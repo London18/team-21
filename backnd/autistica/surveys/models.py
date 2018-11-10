@@ -3,9 +3,12 @@ from django.db import models
 # Create your models here.
 class Question(models.Model):
     qtype = models.CharField(max_length=20, default='open_text')
-    question_text = models.CharField(max_length=200)
+    question_text = models.CharField(max_length=200, default="")
 
     def __str__(self):
+        return self.id
+
+    def text(self):
         return self.question_text
 
     def qcat(self):
@@ -44,10 +47,9 @@ class SurveyQuestions(models.Model):
         return self.survey.title
     
 class UserSurvey(models.Model):
-    id = models.AutoField(primary_key=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    survey = models.ForeignKey(Survey, on_delete=models.CASCADE)
-    #response = models.ForeignKey(Response, on_delete=models.CASCADE)
+    survey_question = models.ForeignKey(SurveyQuestions, on_delete=models.CASCADE, default=None)
+    response = models.CharField(max_length=200, default=None)
 
     def __str__(self):
         return "Survey"+str(self.id)

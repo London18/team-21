@@ -38,6 +38,7 @@ def survey_questions(request, forSurvey='all'):
             survey_q = SurveyQuestions.objects.filter(survey__title=surveyT, question=qid)[0]
 
         userData = UserSurvey.objects.create(user=usr, survey_question=survey_q, response=resp)
+        userData.save()
 
         return HttpResponse("Working")
 

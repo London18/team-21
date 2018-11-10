@@ -48,6 +48,21 @@ class Survey extends Component {
   };
 
   nextQuestion = () => {
+    //we send the current question answer to the server
+    /*axios
+      .post("http://localhost:8000/surveys/ (and the server title!)", {
+        crossdomain: true
+        //surveyTitle:
+        //answer:
+        //type:
+        //username:
+      //})
+      .then(function(response) {
+        console.log(response);
+      })
+      .catch(function(error) {
+        console.log(error);
+      });*/
     this.setState(prevState => ({
       index: prevState.index + 1,
       submitEnabled: false,

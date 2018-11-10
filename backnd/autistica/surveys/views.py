@@ -1,17 +1,45 @@
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 import json
-from surveys.models import Survey, SurveyQuestions
+from surveys.models import User, Response, Survey, SurveyQuestions, Question, UserSurvey
+from django.views.decorators.csrf import csrf_exempt
 
 
 # Create your views here.
 def index(request):
     return HttpResponse("Testing...")
 
-def survey_questions(request, survey='all'):
-    json_questions = fetchQuestions(survey)
-    print(json_questions)
-    return JsonResponse(json_questions, safe=False)
+@csrf_exempt
+def survey_questions(request, forSurvey='all'):
+    if request.method == 'GET':
+        json_questions = fetchQuestions(forSurvey)
+        print(json_questions)
+        return JsonResponse(json_questions, safe=False)
+    elif request.method == 'POST':
+        # username = request.POST.get('username')
+        # print(username)
+        response_json = json.loads(request.body)
+        print(response_json)
+        user_name = response_json.get("user", "guest")
+        surveyT = response_json.get("survey", "s_title")
+        qid = response_json.get("qid", "1")
+        rsp = response_json.get("response", "answer")
+
+        usr = None
+        resp = None
+        survey_q = None
+        try:
+            usr = User.objects.get(username=user_name)
+            resp = Response.objects.get(response_text=rsp)
+            survey_q = SurveyQuestions.objects.filter(survey__title=surveyT, question=qid)[0]
+        except:
+            usr = User.objects.all()[0]
+            resp = Response.objects.all()[0]
+            survey_q = SurveyQuestions.objects.filter(survey__title=surveyT, question=qid)[0]
+
+        userData = UserSurvey.objects.create(user=usr, survey_question=survey_q, response=resp)
+
+        return HttpResponse("Working")
 
 def surveys(request, survey='all'):
     json_surveys = fetchSurveys()

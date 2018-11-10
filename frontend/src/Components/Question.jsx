@@ -15,12 +15,12 @@ class Question extends Component {
 
   constructor(props) {
     super(props);
-    this.setQuestionComponent(props.type);
   }
 
   componentDidUpdate(newProps) {
+    console.log(newProps.text);
     if (this.props.type !== newProps.type) {
-      this.setQuestionComponent(newProps.type);
+      // this.setQuestionComponent(newProps.type);
     }
     if (this.props.text !== newProps.text) {
       document.getElementById("questionForm").reset();
@@ -32,16 +32,14 @@ class Question extends Component {
       <div>
         <form id="questionForm">
           <p>{this.props.text}</p>
-          {this.state.QuestionResponse}
+          {this.getQuestionComponent(this.props.type)}
         </form>
       </div>
     );
   }
 
-  setQuestionComponent = newType => {
-    this.setState({
-      QuestionResponse: typeToComponentsMap[newType],
-    });
+  getQuestionComponent = type => {
+    return typeToComponentsMap[type];
   };
 }
 

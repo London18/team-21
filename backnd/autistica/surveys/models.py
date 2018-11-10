@@ -48,4 +48,4 @@ class UserSurvey(models.Model):
     r_text = models.CharField(max_length=200, default=None)
 
     def __str__(self):
-        return str(user.name)+str(s_q.survey.title)+str(self.id)
+        return str(self.user.user)+str(self.s_q.survey.title)+str(self.id)

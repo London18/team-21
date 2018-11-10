@@ -20,23 +20,24 @@ def survey_questions(request, forSurvey='all'):
         # print(username)
         response_json = json.loads(request.body)
         print(response_json)
-        user_id = response_json.get("userid", "guest")
-        surveyT = response_json.get("surveyTitle", "s_title")
-        qid = response_json.get("questionId", "1")
-        rsp = response_json.get("answer", "answer")
+        user_id = response_json.get("userid")
+        surveyT = response_json.get("surveyTitle")
+        qid = response_json.get("questionId")
+        rsp = response_json.get("answer")
 
         usr = None
-        resp = None
         survey_q = None
+        usr = User.objects.get_or_create(user=user_id,
+                                          pwd='pls_no_hax',
+                                          no_stars=1,
+                                          no_surveys=1,
+                                          t_contributed=1)
         try:
-            usr = User.objects.get(name=user_id)
-            resp = Response.objects.get(r_text=rsp)
             survey_q = SurveyQuestions.objects.filter(survey__title=surveyT, question=qid)[0]
         except:
-            usr = User.objects.all()[0]
             survey_q = SurveyQuestions.objects.filter(survey__title=surveyT, question=qid)[0]
 
-        userData = UserSurvey.objects.create(user=usr, s_q=survey_q, r_text=resp)
+        userData = UserSurvey.objects.create(user=usr[0], s_q=survey_q, r_text=rsp)
         userData.save()
 
         return HttpResponse("Working")

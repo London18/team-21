@@ -30,7 +30,7 @@ class Question extends Component {
     return (
       <div>
         <form id="questionForm" onChange={this.onSelect}>
-          <p>{this.props.text}</p>
+          <p className="display-4">{this.props.text}</p>
           {this.getQuestionComponent(this.props.type)}
         </form>
       </div>

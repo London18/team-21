@@ -29,7 +29,7 @@ class Login extends Component {
         </head>
         <body>
          <p>
-         Welcome to Autistica Surveys! Please enter your user id:</p><p>
+        <h1> Welcome to Autistica Surveys! Please enter your user id:</h1></p><p>
           <form onSubmit={this.handleSubmit}>
             <label>
               user ID:
@@ -46,7 +46,7 @@ class Login extends Component {
                 type="checkbox"
                 checked={this.state.remember}
                 onChange={this.handleRememberChange}
-              /> Remember me
+              /> <h3>Remember me</h3>
           </form></p>
         </body>
       </div>

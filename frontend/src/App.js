@@ -14,19 +14,7 @@ const App = () => {
     <Router>
       <React.Fragment>
         <Header />
-        {/* <nav>
-          <ul>
-            <li>
-              <Link to="/">Dashboard</Link>
-            </li>
-            <li>
-              <Link to="/login/">Login</Link>
-            </li>
-            <li>
-              <Link to="/survey/">Survey</Link>
-            </li>
-          </ul>
-        </nav> */}
+
         <div className="content centered">
           <br />
           <br />

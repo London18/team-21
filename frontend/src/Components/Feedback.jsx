@@ -4,12 +4,12 @@ class Feedback extends React.Component {
   render() {
     return (
       <div>
-        <p>Thank you!</p>
-        <p>
+        <p className="display-3">Thank you!</p>
+        <p className="display-4">
           You've contributed x hours to autism research. You've helped us to
           improve the lives of people with autism all around the world.{" "}
         </p>
-        <b>You've earned xyz points</b>
+        <b className="display-4">You've earned 50 points</b>
       </div>
     );
   }

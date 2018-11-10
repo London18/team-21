@@ -71,7 +71,7 @@ class Survey extends Component {
     return (
       <React.Fragment>
         {this.state.index < this.state.questions.length && (
-          <p style={{ textAlign: "center" }}>
+          <p style={{ textAlign: "center" }} className="display-3">
             Question {this.state.index + 1} of {this.state.questions.length}
           </p>
         )}
@@ -111,6 +111,7 @@ class Survey extends Component {
         />
         <input
           type="button"
+          className="btn btn-success"
           id="submitSurvey"
           onClick={this.nextQuestion}
           value="Submit"
@@ -132,6 +133,7 @@ class Survey extends Component {
         <Feedback />
         <input
           type="button"
+          className="btn btn-success"
           id="submit"
           onClick={this.finish}
           value="Finished"

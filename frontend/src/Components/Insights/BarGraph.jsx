@@ -43,7 +43,7 @@ const yPoint = compose(
 );
 
 // Finally we'll embed it all in an SVG
-function BarGraph(props) {
+const BarGraph = () => {
   return (
     <svg width={width} height={height}>
       {data.map((d, i) => {
@@ -62,6 +62,6 @@ function BarGraph(props) {
       })}
     </svg>
   );
-}
+};
 
 export default BarGraph;

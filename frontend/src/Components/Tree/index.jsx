@@ -1,11 +1,59 @@
 import React from "react";
+import { parse } from "querystring";
+const pad = size => {
+  if (size < 10) {
+    return "00" + size;
+  } else if (size < 100) {
+    return "0" + size;
+  } else {
+    return size;
+  }
+};
+const axios = require("axios");
 
-export default function Tree() {
-  return (
-    <div>
-      <h2>Hi John Doe</h2>
-      <p>Well done you've logged in for X consecutive days.</p>
-      <img src="./images/tree.gif" alt="Progress tree" />
-    </div>
-  );
+class Tree extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  componentDidMount() {
+    axios
+      .post("http://localhost:8000/questionCount")
+      .then(response => {
+        this.setState({
+          questionCount: response,
+        });
+      })
+      .catch(error => {});
+  }
+  render() {
+    console.log(
+      "./images/tree/frame_" +
+        pad(localStorage.getItem("numberOfQuestions")) +
+        "_delay-0.05s.png",
+    );
+    return (
+      <div>
+        <div>
+          <img
+            src={
+              "./images/tree/frame_" +
+              pad(localStorage.getItem("numberOfQuestions")) +
+              "_delay-0.05s.png"
+            }
+            alt="Progress tree"
+          />
+          <br />
+          <br />
+          <i style={{ fontSize: "18px" }}>
+            Someone is sitting in the shade today because someone planted a tree
+            a long time ago.
+          </i>
+        </div>
+      </div>
+    );
+  }
 }
+
+Tree.defaultProps = { questionCount: 0 };
+export default Tree;

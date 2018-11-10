@@ -69,6 +69,7 @@ class Survey extends Component {
         surveyTitle: this.props.match.params.name,
         answer: questionAnswer,
         type: this.state.questions[this.state.index].type,
+        questionId: this.state.questions[this.state.index].id,
       })
       .then(function(response) {
         console.log(response);

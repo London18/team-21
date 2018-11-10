@@ -8,7 +8,8 @@ import Header from "./Components/Header";
 import Tree from "./Components/Tree";
 
 const App = () => {
-  let loggedInBefore = localStorage.getItem("loggedIn");
+  let loggedInBefore =
+    localStorage.getItem("loggedIn") || sessionStorage.getItem("loggedIn");
   let Home = loggedInBefore === "true" ? Dashboard : Login;
   return (
     <Router>

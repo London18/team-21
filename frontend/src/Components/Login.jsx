@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import { withRouter, Link } from 'react-router-dom';
+import React, { Component } from "react";
+import { withRouter, Link } from "react-router-dom";
 
 class Login extends Component {
-  state = { userid: '', remember: false };
+  state = { userid: "", remember: false };
 
   render() {
     return (
@@ -30,7 +30,7 @@ class Login extends Component {
                 type="checkbox"
                 checked={this.state.remember}
                 onChange={this.handleRememberChange}
-              />{' '}
+              />{" "}
               Remember me
             </form>
           </p>
@@ -43,7 +43,7 @@ class Login extends Component {
     return (
       <div>
         <p>
-          If you don't have an id, but want to participate,{' '}
+          If you don't have an id, but want to participate,{" "}
           <Link to={`/registernoid/`}>click here to register.</Link>
         </p>
       </div>
@@ -52,17 +52,18 @@ class Login extends Component {
 
   handleRememberChange = () => {
     this.setState({
-      remember: !this.state.remember
+      remember: !this.state.remember,
     });
   };
 
   handleSubmit = () => {
     if (this.state.remember) {
-      localStorage.setItem('loggedIn', true);
+      localStorage.setItem("loggedIn", true);
     } else {
-      sessionStorage.setItem('loggedIn', true);
+      sessionStorage.setItem("loggedIn", true);
     }
-    this.props.history.push('/');
+    localStorage.setItem("userID", this.state.userid);
+    this.props.history.push("/");
   };
 
   handleUserIdChange = event => {

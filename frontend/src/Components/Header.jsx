@@ -8,7 +8,6 @@ const Header = () => {
         Home
       </Link>
       <a href="/tree">Your Garden</a>
-      <a href="/insights">Insights</a>
     </div>
   );
 };

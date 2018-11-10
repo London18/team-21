@@ -28,20 +28,23 @@ class User(models.Model):
 
     def __str__(self):
         return self.username
-    
+
 class Survey(models.Model):
     title = models.CharField(max_length=20, default='survey_title')
     category = models.CharField(max_length=20)
-    question = models.ForeignKey(Question, on_delete=models.CASCADE)
-    response = models.ForeignKey(Response, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.title
 
+class SurveyQuestions(models.Model):
+    survey = models.ForeignKey(Survey, on_delete=models.CASCADE)
+    question = models.ForeignKey(Question, on_delete=models.CASCADE)
+    
 class UserSurvey(models.Model):
     id = models.AutoField(primary_key=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     survey = models.ForeignKey(Survey, on_delete=models.CASCADE)
+    #response = models.ForeignKey(Response, on_delete=models.CASCADE)
 
     def __str__(self):
         return "Survey"+str(self.id)

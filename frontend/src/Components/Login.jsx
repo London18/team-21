@@ -1,20 +1,20 @@
-import React, { Component } from "react";
-import { withRouter } from "react-router-dom";
+import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 
 class Login extends Component {
-  state = { userid: "", remember: false };
+  state = { userid: '', remember: false };
 
   handleRememberChange = () => {
     this.setState({
-      remember: !this.state.remember,
+      remember: !this.state.remember
     });
   };
 
   handleSubmit = () => {
     if (this.state.remember) {
-      localStorage.setItem("loggedIn", true);
+      localStorage.setItem('loggedIn', true);
     }
-    this.props.history.push("/");
+    this.props.history.push('/');
   };
 
   handleChange = event => {
@@ -43,6 +43,7 @@ class Login extends Component {
               />
             </label>
             <input type="submit" value="Submit" />
+
             <input
               name="remember"
               type="checkbox"

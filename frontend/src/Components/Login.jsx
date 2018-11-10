@@ -1,27 +1,8 @@
-import React, { Component } from "react";
-import { withRouter, Link } from "react-router-dom";
+import React, { Component } from 'react';
+import { withRouter, Link } from 'react-router-dom';
 
 class Login extends Component {
-  state = { userid: "", remember: false };
-
-  handleRememberChange = () => {
-    this.setState({
-      remember: !this.state.remember,
-    });
-  };
-
-  handleSubmit = () => {
-    if (this.state.remember) {
-      localStorage.setItem("loggedIn", true);
-    } else {
-      sessionStorage.setItem("loggedIn", true);
-    }
-    this.props.history.push("/");
-  };
-
-  handleChange = event => {
-    this.setState({ userid: event.target.value });
-  };
+  state = { userid: '', remember: false };
 
   render() {
     return (
@@ -31,8 +12,7 @@ class Login extends Component {
         </head>
         <body>
           <p>
-            Welcome to Autistica Surveys! Here you can answer survey questions
-            and contribute to austism research. Please enter your user id:
+            <h1> Welcome to Autistica Surveys! Please enter your user id:</h1>
           </p>
           <p>
             <form onSubmit={this.handleSubmit}>
@@ -51,25 +31,44 @@ class Login extends Component {
                 type="checkbox"
                 checked={this.state.remember}
                 onChange={this.handleRememberChange}
-              />{" "}
-              Remember me
+              />{' '}
+              <h3>Remember me</h3>
             </form>
           </p>
-          {this.renderNoExistingId()}
         </body>
       </div>
     );
   }
+
   renderNoExistingId() {
     return (
       <div>
         <p>
-          If you don't have an id, but want to participate,{" "}
+          If you don't have an id, but want to participate,{' '}
           <Link to={`/registernoid/`}>click here to register.</Link>
         </p>
       </div>
     );
   }
+
+  handleRememberChange = () => {
+    this.setState({
+      remember: !this.state.remember
+    });
+  };
+
+  handleSubmit = () => {
+    if (this.state.remember) {
+      localStorage.setItem('loggedIn', true);
+    } else {
+      sessionStorage.setItem('loggedIn', true);
+    }
+    this.props.history.push('/');
+  };
+
+  handleUserIdChange = event => {
+    this.setState({ userid: event.target.value });
+  };
 }
 
 export default withRouter(Login);

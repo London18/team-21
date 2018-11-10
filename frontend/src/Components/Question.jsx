@@ -13,23 +13,6 @@ class Question extends Component {
       <div>
         <form id="questionForm">
           <p>{this.props.text}</p>
-          <div>
-            <input
-              type="checkbox"
-              id="verygood"
-              name="verygood"
-              value="verygood"
-            />
-            <label for="verygood">very good</label>
-          </div>
-          <div>
-            <input type="checkbox" id="good" name="good" value="good" />
-            <label for="good">good</label>
-          </div>
-          <div>
-            <input type="checkbox" id="poor" name="poor" value="poor" />
-            <label for="poor">poor</label>
-          </div>
           <MultipleChoiceResponse />
         </form>
       </div>

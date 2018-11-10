@@ -31,16 +31,6 @@ class Question extends Component {
       <div>
         <form id="questionForm">
           <p>{this.props.text}</p>
-          <div>
-            <input
-              type="checkbox"
-              id="verygood"
-              name="verygood"
-              value="verygood"
-            />
-            <label for="verygood">very good</label>
-          </div>
-
           {this.state.QuestionResponse}
         </form>
       </div>
@@ -51,7 +41,6 @@ class Question extends Component {
     this.setState({
       QuestionResponse: typeToComponentsMap[newType],
     });
-    console.log(newType);
   };
 }
 

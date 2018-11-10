@@ -3,7 +3,7 @@ import React, { Component } from "react";
 class OpenTextResponse extends React.Component {
   render() {
     return (
-      <input
+      <textarea
         type="text"
         placeholder="Enter text..."
         style={{ height: "100pt" }}

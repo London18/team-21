@@ -42,17 +42,13 @@ class Survey extends Component {
       .get("http://localhost:8000/surveys/" + name, { crossdomain: true })
       .then(response => {
         let data = JSON.parse(response.data);
-
         let parsedData = data.map((x, i) => {
           return {
             key: i,
-            text: x.qText,
-            type: x.qType,
+            text: x.qtext,
+            type: x.qtype,
           };
         });
-
-        console.log(parsedData);
-
         this.setState({ questions: parsedData });
       })
       .catch(function(error) {

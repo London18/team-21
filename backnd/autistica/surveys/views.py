@@ -18,9 +18,6 @@ def surveys(request, survey='all'):
     print(json_surveys)
     return JsonResponse(json_surveys, safe=False)
 
-def dashboard(request):
-    return HttpResponse("Dashboard")
-
 def fetchSurveys():
     query = []
     query = Survey.objects.all()
@@ -50,7 +47,11 @@ def fetchQuestions(forSurvey='all'):
     objList = []
     
     for data in query:
-        objList.append({'qText': data.question.question_text, 'qType': data.question.qtype})
+        objList.append({
+            'id': data.question.id,
+            'qtext': data.question.question_text,
+            'qtype': data.question.qtype,
+            })
 
     json_query = json.dumps(objList)
     return json_query

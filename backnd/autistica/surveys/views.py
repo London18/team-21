@@ -29,23 +29,15 @@ def survey_questions(request, forSurvey='all'):
         resp = None
         survey_q = None
         try:
-<<<<<<< HEAD
-            usr = User.objects.get(username=user_name)
-=======
             usr = User.objects.get(name=user_name)
             resp = Response.objects.get(r_text=rsp)
->>>>>>> backnd
             survey_q = SurveyQuestions.objects.filter(survey__title=surveyT, question=qid)[0]
         except:
             usr = User.objects.all()[0]
             survey_q = SurveyQuestions.objects.filter(survey__title=surveyT, question=qid)[0]
 
-<<<<<<< HEAD
-        userData = UserSurvey.objects.create(user=usr, survey_question=survey_q, response=rsp)
-        userData.save()
-=======
         userData = UserSurvey.objects.create(user=usr, s_q=survey_q, r_text=resp)
->>>>>>> backnd
+        userData.save()
 
         return HttpResponse("Working")
 

@@ -3,25 +3,17 @@ import OpenTextResponse from "./OpenTextResponse";
 import MultipleChoiceResponse from "./MultipleChoiceResponse";
 import PropTypes from "prop-types";
 
-const typeToComponentsMap = {
+const typeToResponseComponentMap = {
   openText: <OpenTextResponse />,
   multipleChioce: <MultipleChoiceResponse />,
 };
 
 class Question extends Component {
-  state = {
-    QuestionResponse: null,
-  };
-
   constructor(props) {
     super(props);
   }
 
   componentDidUpdate(newProps) {
-    console.log(newProps.text);
-    if (this.props.type !== newProps.type) {
-      // this.setQuestionComponent(newProps.type);
-    }
     if (this.props.text !== newProps.text) {
       document.getElementById("questionForm").reset();
     }
@@ -39,7 +31,7 @@ class Question extends Component {
   }
 
   getQuestionComponent = type => {
-    return typeToComponentsMap[type];
+    return typeToResponseComponentMap[type];
   };
 }
 

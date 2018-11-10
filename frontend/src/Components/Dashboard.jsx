@@ -13,9 +13,9 @@ class Dashboard extends Component {
     return (
       <div className="content centered">
         <body>
-          <h2 className="display-3">Welcome, John Doe!</h2>
+          <h2 className="display-3">Welcome!</h2>
           <p>You have surveys to fill in:</p>
-          <div className="d-flex flex-row justify-content-around">
+          <div className="d-flex flex-column justify-content-around">
             {this.state.surveys.map(item => (
               <SurveyButton name={item.title} />
             ))}

@@ -11,9 +11,12 @@ import Insights from './Components/Insights';
 
 const App = () => {
   let loggedInBefore = getLoggedInStatus();
-  let Home = loggedInBefore === 'true' ? Dashboard : Login;
-  if (localStorage.getItem('numberOfStars') === undefined) {
-    localStorage.setItem('numberOfStars', '0');
+  let Home = loggedInBefore === "true" ? Dashboard : Login;
+  if (isNaN(parseInt(localStorage.getItem("numberOfStars")))) {
+    localStorage.setItem("numberOfStars", "0");
+  }
+  if (parseInt(localStorage.getItem("numberOfStars"))) {
+    localStorage.setItem("numberOfQuestions", "0");
   }
   return (
     <Router>

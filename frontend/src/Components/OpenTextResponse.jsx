@@ -18,7 +18,7 @@ class OpenTextResponse extends React.Component {
         id="opentextinput"
         type="text"
         placeholder="Enter text..."
-        style={{ height: "100pt" }}
+        style={{ height: "100pt" ,width: '50%'}}
         onChange={this.handleTextChange}
       />
     );

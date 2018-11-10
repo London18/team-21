@@ -11,37 +11,29 @@ class Login extends Component {
           <title>Login</title>
         </head>
         <body>
-          <div className="centered">
-            <h2 className="display-3"> Welcome to Autistica Surveys!</h2>
-            <p>Please enter your user id:</p>
-            <p>
-              <form onSubmit={this.handleSubmit}>
-                <label>
-                  user ID:
-                  <input
-                    type="text"
-                    className=""
-                    value={this.state.userid}
-                    onChange={this.handleChange}
-                  />
-                </label>
-                &nbsp;
+          <p>
+            <h1> Welcome to Autistica Surveys! Please enter your User ID:</h1>
+          </p>
+          <p>
+            <form onSubmit={this.handleSubmit}>
+              <label>
                 <input
-                  type="submit"
-                  className="btn btn-success"
-                  value="Submit"
+                  type="text"
+                  value={this.state.userid}
+                  onChange={this.handleUserIdChange}
                 />
-                <br />
-                <input
-                  name="remember"
-                  type="checkbox"
-                  checked={this.state.remember}
-                  onChange={this.handleRememberChange}
-                />
-                &nbsp;Remember me
-              </form>
-            </p>
-          </div>
+              </label>
+              <input type="submit" value="Submit" />
+              <p> </p>
+              <input
+                name="remember"
+                type="checkbox"
+                checked={this.state.remember}
+                onChange={this.handleRememberChange}
+              />{' '}
+              Remember me
+            </form>
+          </p>
         </body>
       </div>
     );

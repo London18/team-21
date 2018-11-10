@@ -39,6 +39,9 @@ class Survey(models.Model):
 class SurveyQuestions(models.Model):
     survey = models.ForeignKey(Survey, on_delete=models.CASCADE)
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.survey.title
     
 class UserSurvey(models.Model):
     id = models.AutoField(primary_key=True)

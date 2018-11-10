@@ -5,47 +5,56 @@ import { Line, Circle } from "rc-progress";
 const axios = require("axios");
 
 class Survey extends Component {
-  constructor(props) {
-    super(props);
+  state = {
+    questions: [
+      // {
+      //   text: "How are you feeling?",
+      //   type: "scale",
+      // },
+      // {
+      //   text: "How was your day?",
+      //   type: "scale",
+      // },
+      // {
+      //   text: "Third question?",
+      //   type: "scale",
+      // },
+      // {
+      //   text: "Fourth question",
+      //   type: "scale",
+      // },
+      // {
+      //   text: "Fifth question?",
+      //   type: "scale",
+      // },
+      // {
+      //   text: "Sixth question",
+      //   type: "multipleChoice",
+      // },
+    ],
+    index: 0,
+    submitEnabled: false,
+  };
+
+  componentDidMount() {
+    let name = this.props.match.params.name;
     axios
-      .get("http://localhost:8000/surveys/", { crossdomain: true })
-      .then(function(response) {
-        console.log(response);
+      .get("http://localhost:8000/surveys/" + name, { crossdomain: true })
+      .then(response => {
+        let data = JSON.parse(response.data);
+        let parsedData = data.map((x, i) => {
+          return {
+            key: i,
+            text: x.qtext,
+            type: x.qtype,
+          };
+        });
+        this.setState({ questions: parsedData });
       })
       .catch(function(error) {
         console.log(error);
       });
   }
-  state = {
-    questions: [
-      {
-        text: "How are you feeling?",
-        type: "scale",
-      },
-      {
-        text: "How was your day?",
-        type: "scale",
-      },
-      {
-        text: "Third question?",
-        type: "scale",
-      },
-      {
-        text: "Fourth question",
-        type: "scale",
-      },
-      {
-        text: "Fifth question?",
-        type: "scale",
-      },
-      {
-        text: "Sixth question",
-        type: "multipleChoice",
-      },
-    ],
-    index: 0,
-    submitEnabled: false,
-  };
 
   nextQuestion = () => {
     this.setState(prevState => ({
@@ -85,7 +94,7 @@ class Survey extends Component {
             strokeColor="#2db7f5"
           />
         </div>
-        <img src="./images/sss.png" style={{ height: "60px" }} />
+        <img src="../images/sss.png" style={{ height: "60px" }} />
       </div>
     );
   };

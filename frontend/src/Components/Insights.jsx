@@ -63,3 +63,5 @@ function BarGraph(props) {
     </svg>
   );
 }
+
+export default BarGraph;

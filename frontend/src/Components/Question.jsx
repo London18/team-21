@@ -23,7 +23,6 @@ class Question extends Component {
     console.log(prevProps.id);
     if (this.props.id !== prevProps.id) {
       document.getElementById("questionForm").reset();
-      // document.getElementById("questionForm").
     }
   }
 

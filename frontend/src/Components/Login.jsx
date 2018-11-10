@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 
 class Login extends Component {
   state = { userid: "", remember: false };
@@ -30,7 +30,10 @@ class Login extends Component {
           <title>Login</title>
         </head>
         <body>
-          <p>Welcome to Autistica Surveys! Please enter your user id:</p>
+          <p>
+            Welcome to Autistica Surveys! Here you can answer survey questions
+            and contribute to austism research. Please enter your user id:
+          </p>
           <p>
             <form onSubmit={this.handleSubmit}>
               <label>
@@ -52,7 +55,18 @@ class Login extends Component {
               Remember me
             </form>
           </p>
+          {this.renderNoExistingId()}
         </body>
+      </div>
+    );
+  }
+  renderNoExistingId() {
+    return (
+      <div>
+        <p>
+          If you don't have an id, but want to participate,{" "}
+          <Link to={`/registernoid/`}>click here to register.</Link>
+        </p>
       </div>
     );
   }

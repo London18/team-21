@@ -41,7 +41,6 @@ class Dashboard extends Component {
           <div>
             {this.state.surveys.map((item, index) => (
               <SurveyButton name={item.title} />
-              // <p>{item}</p>
             ))}
           </div>
         </body>

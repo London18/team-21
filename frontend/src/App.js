@@ -6,6 +6,7 @@ import Login from "./Components/Login";
 import Dashboard from "./Components/Dashboard";
 import Header from "./Components/Header";
 import Tree from "./Components/Tree";
+import PersonalInfo from "./Components/PersonalInfo";
 
 const App = () => {
   let loggedInBefore =
@@ -15,26 +16,13 @@ const App = () => {
     <Router>
       <React.Fragment>
         <Header />
-        {/* <nav>
-          <ul>
-            <li>
-              <Link to="/">Dashboard</Link>
-            </li>
-            <li>
-              <Link to="/login/">Login</Link>
-            </li>
-            <li>
-              <Link to="/survey/">Survey</Link>
-            </li>
-          </ul>
-        </nav> */}
         <div className="content centered">
           <br />
           <br />
           <Route path="/" exact component={Home} />
           <Route path="/login/" exact component={Login} />
           <Route path="/survey/:name" component={Survey} />
-          {/* <Route path="/survey/" component={Survey} /> */}
+          <Route path="/registernoid/" component={PersonalInfo} />
           <Route path="/tree/" component={Tree} />
         </div>
       </React.Fragment>

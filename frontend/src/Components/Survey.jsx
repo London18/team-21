@@ -6,32 +6,7 @@ const axios = require("axios");
 
 class Survey extends Component {
   state = {
-    questions: [
-      // {
-      //   text: "How are you feeling?",
-      //   type: "scale",
-      // },
-      // {
-      //   text: "How was your day?",
-      //   type: "scale",
-      // },
-      // {
-      //   text: "Third question?",
-      //   type: "scale",
-      // },
-      // {
-      //   text: "Fourth question",
-      //   type: "scale",
-      // },
-      // {
-      //   text: "Fifth question?",
-      //   type: "scale",
-      // },
-      // {
-      //   text: "Sixth question",
-      //   type: "multipleChoice",
-      // },
-    ],
+    questions: [],
     index: 0,
     submitEnabled: false,
   };
@@ -114,7 +89,6 @@ class Survey extends Component {
             strokeColor="#2db7f5"
           />
         </div>
-        <img src="../images/sss.png" style={{ height: "60px" }} />
       </div>
     );
   };
@@ -157,6 +131,7 @@ class Survey extends Component {
   renderFeedback = () => {
     return (
       <div>
+        <img src="../images/sss.png" style={{ height: "60px" }} />
         <Feedback />
         <input
           type="button"

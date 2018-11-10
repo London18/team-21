@@ -5,9 +5,9 @@ import ScaleResponse from "./ScaleResponse";
 import PropTypes from "prop-types";
 
 const typeToResponseComponentMap = {
-  openText: <OpenTextResponse />,
-  multipleChoice: <MultipleChoiceResponse />,
-  scale: <ScaleResponse />,
+  openText: OpenTextResponse,
+  multipleChoice: MultipleChoiceResponse,
+  scale: ScaleResponse,
 };
 
 class Question extends Component {
@@ -15,16 +15,21 @@ class Question extends Component {
     super(props);
   }
 
-  componentDidUpdate(newProps) {
-    if (this.props.text !== newProps.text) {
+  componentDidUpdate(prevProps) {
+    if (this.props.text !== prevProps.text) {
       document.getElementById("questionForm").reset();
+      // document.getElementById("questionForm").
     }
   }
+
+  onSelect = () => {
+    if (this.props.type !== "openText") this.props.onValidInput();
+  };
 
   render() {
     return (
       <div>
-        <form id="questionForm">
+        <form id="questionForm" onChange={this.onSelect}>
           <p>{this.props.text}</p>
           {this.getQuestionComponent(this.props.type)}
         </form>
@@ -33,7 +38,10 @@ class Question extends Component {
   }
 
   getQuestionComponent = type => {
-    return typeToResponseComponentMap[type];
+    return React.createElement(typeToResponseComponentMap[type], {
+      onValidInput: this.props.onValidInput,
+      onInvalidInput: this.props.onInvalidInput,
+    });
   };
 }
 

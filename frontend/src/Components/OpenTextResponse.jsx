@@ -4,6 +4,9 @@ class OpenTextResponse extends React.Component {
   handleTextChange = event => {
     if (event.target.value.length > 0) {
       document.getElementById("submitSurvey").disabled = false;
+      this.props.onValidInput();
+    } else {
+      this.props.onInvalidInput();
     }
   };
   render() {

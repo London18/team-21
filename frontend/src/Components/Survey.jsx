@@ -2,8 +2,20 @@ import React, { Component } from "react";
 import Question from "./Question";
 import Feedback from "./Feedback";
 import { Line, Circle } from "rc-progress";
+const axios = require("axios");
 
 class Survey extends Component {
+  constructor(props) {
+    super(props);
+    axios
+      .get("/user?ID=12345")
+      .then(function(response) {
+        console.log(response);
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
+  }
   state = {
     questions: [
       {
@@ -12,19 +24,33 @@ class Survey extends Component {
       },
       {
         text: "How was your day?",
-        type: "multipleChoice",
+        type: "openText",
       },
       {
         text: "Third question?",
         type: "scale",
       },
+      {
+        text: "Fourth question",
+        type: "scale",
+      },
+      {
+        text: "Fifth question?",
+        type: "multipleChoice",
+      },
+      {
+        text: "Sixth question",
+        type: "multipleChoice",
+      },
     ],
     index: 0,
+    submitEnabled: false,
   };
 
   nextQuestion = () => {
     this.setState(prevState => ({
       index: prevState.index + 1,
+      submitEnabled: false,
     }));
   };
 
@@ -50,13 +76,16 @@ class Survey extends Component {
 
   renderProgressBar = () => {
     return (
-      <div style={{ width: "80%", marginLeft: "auto", marginRight: "auto" }}>
-        <Line
-          percent={(100 * this.state.index) / this.state.questions.length}
-          strokeWidth="1.5"
-          trailWidth="1.5"
-          strokeColor="#2db7f5"
-        />
+      <div>
+        <div style={{ width: "80%", marginLeft: "auto", marginRight: "auto" }}>
+          <Line
+            percent={(100 * this.state.index) / this.state.questions.length}
+            strokeWidth="1.5"
+            trailWidth="1.5"
+            strokeColor="#2db7f5"
+          />
+        </div>
+        <img src="./images/sss.png" style={{ height: "60px" }} />
       </div>
     );
   };
@@ -65,15 +94,27 @@ class Survey extends Component {
     let question = this.state.questions[this.state.index];
     return (
       <div>
-        <Question text={question.text} type={question.type} />
+        <Question
+          text={question.text}
+          type={question.type}
+          onValidInput={this.handleQuestioninput(true)}
+          onInvalidInput={this.handleQuestioninput(false)}
+        />
         <input
           type="button"
           id="submitSurvey"
           onClick={this.nextQuestion}
           value="Submit"
+          disabled={!this.state.submitEnabled}
         />{" "}
       </div>
     );
+  };
+
+  handleQuestioninput = valid => () => {
+    this.setState({
+      submitEnabled: valid,
+    });
   };
 
   renderFeedback = () => {

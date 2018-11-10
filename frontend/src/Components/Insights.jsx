@@ -1,10 +1,10 @@
 import React from 'react';
-import Table from '@material-ui/core/Table';
+import Table from '@material-ui/core/';
 
 export default function Insights() {
   return (
     <div>
-      <Table
+      {/* <Table
         tableHeaderColor="primary"
         tableHead={['Name', 'Country', 'City', 'Salary']}
         tableData={[
@@ -15,7 +15,7 @@ export default function Insights() {
           ['Doris Greene', 'Malawi', 'Feldkirchen in Kärnten', '$63,542'],
           ['Mason Porter', 'Chile', 'Gloucester', '$78,615']
         ]}
-      />
+      /> */}
     </div>
   );
 }

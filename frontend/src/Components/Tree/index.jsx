@@ -16,7 +16,7 @@ class Tree extends React.Component {
     super(props);
   }
 
-  componentDidMount() {
+  /*componentDidMount() {
     axios
       .post("http://localhost:8000/questionCount")
       .then(response => {
@@ -25,7 +25,7 @@ class Tree extends React.Component {
         });
       })
       .catch(error => {});
-  }
+  }*/
   render() {
     console.log(
       "./images/tree/frame_" +

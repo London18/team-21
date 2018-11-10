@@ -8,7 +8,7 @@ class Survey extends Component {
   constructor(props) {
     super(props);
     axios
-      .get("/user?ID=12345")
+      .get("http://localhost:8000/surveys/", { crossdomain: true })
       .then(function(response) {
         console.log(response);
       })

@@ -16,4 +16,4 @@ tests/coverage_html/
 tests/.coverage
 build/
 tests/report/
-autistica/autistica/__pycache__
+autistica/autistica/__pycache__/

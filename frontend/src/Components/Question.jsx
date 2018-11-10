@@ -5,7 +5,7 @@ import ScaleResponse from "./ScaleResponse";
 import PropTypes from "prop-types";
 
 const typeToResponseComponentMap = {
-  openText: OpenTextResponse,
+  open_text: OpenTextResponse,
   multipleChoice: MultipleChoiceResponse,
   scale: ScaleResponse,
 };

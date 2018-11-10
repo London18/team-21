@@ -12,7 +12,7 @@ class Survey extends Component {
       },
       {
         text: "How was your day?",
-        type: "multipleChioce",
+        type: "multipleChoice",
       },
       {
         text: "Third question?",

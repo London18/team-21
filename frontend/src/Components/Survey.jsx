@@ -42,11 +42,13 @@ class Survey extends Component {
       .get("http://localhost:8000/surveys/" + name, { crossdomain: true })
       .then(response => {
         let data = JSON.parse(response.data);
+        console.log(data);
         let parsedData = data.map((x, i) => {
           return {
             key: i,
             text: x.qtext,
             type: x.qtype,
+            id: x.id,
           };
         });
         this.setState({ questions: parsedData });
@@ -56,22 +58,24 @@ class Survey extends Component {
       });
   }
 
-  nextQuestion = () => {
+  nextQuestion = response => {
+    console.log(this.questionComponent.get());
+    let questionAnswer = this.questionComponent.get();
+
     //we send the current question answer to the server
-    /*axios
-      .post("http://localhost:8000/surveys/ (and the server title!)", {
-        crossdomain: true
-        //surveyTitle:
-        //answer:
-        //type:
-        //username:
-      //})
+    axios
+      .post("http://localhost:8000/surveys/" + this.props.match.params.name, {
+        crossdomain: true,
+        surveyTitle: this.props.match.params.name,
+        answer: questionAnswer,
+        type: this.state.questions[this.state.index].type,
+      })
       .then(function(response) {
         console.log(response);
       })
       .catch(function(error) {
         console.log(error);
-      });*/
+      });
     this.setState(prevState => ({
       index: prevState.index + 1,
       submitEnabled: false,
@@ -119,19 +123,27 @@ class Survey extends Component {
     return (
       <div>
         <Question
+          ref={r => (this.questionComponent = r)}
+          id={question.id}
           text={question.text}
           type={question.type}
           onValidInput={this.handleQuestioninput(true)}
           onInvalidInput={this.handleQuestioninput(false)}
         />
-        <input
-          type="button"
-          id="submitSurvey"
-          onClick={this.nextQuestion}
-          value="Submit"
-          disabled={!this.state.submitEnabled}
-        />{" "}
+        {this.renderSubmit()}
       </div>
+    );
+  };
+
+  renderSubmit = () => {
+    return (
+      <input
+        type="button"
+        id="submitSurvey"
+        onClick={this.nextQuestion}
+        value="Submit"
+        disabled={!this.state.submitEnabled}
+      />
     );
   };
 

@@ -15,8 +15,13 @@ class Question extends Component {
     super(props);
   }
 
+  get = () => {
+    return this.responseComponent.get();
+  };
+
   componentDidUpdate(prevProps) {
-    if (this.props.text !== prevProps.text) {
+    console.log(prevProps.id);
+    if (this.props.id !== prevProps.id) {
       document.getElementById("questionForm").reset();
       // document.getElementById("questionForm").
     }
@@ -39,6 +44,7 @@ class Question extends Component {
 
   getQuestionComponent = type => {
     return React.createElement(typeToResponseComponentMap[type], {
+      ref: r => (this.responseComponent = r),
       onValidInput: this.props.onValidInput,
       onInvalidInput: this.props.onInvalidInput,
     });

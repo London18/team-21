@@ -26,10 +26,11 @@ const App = () => {
             </li>
           </ul>
         </nav> */}
-
-        <Route path="/" exact component={Home} />
-        <Route path="/login/" exact component={Login} />
-        <Route path="/survey/" component={Survey} />
+        <div className="main">
+          <Route path="/" exact component={Home} />
+          <Route path="/login/" exact component={Login} />
+          <Route path="/survey/" component={Survey} />
+        </div>
       </React.Fragment>
     </Router>
   );

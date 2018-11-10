@@ -20,11 +20,11 @@ class Survey extends Component {
     questions: [
       {
         text: "How are you feeling?",
-        type: "openText",
+        type: "scale",
       },
       {
         text: "How was your day?",
-        type: "openText",
+        type: "scale",
       },
       {
         text: "Third question?",
@@ -36,7 +36,7 @@ class Survey extends Component {
       },
       {
         text: "Fifth question?",
-        type: "multipleChoice",
+        type: "scale",
       },
       {
         text: "Sixth question",

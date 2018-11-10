@@ -2,10 +2,19 @@ import React, { Component } from "react";
 
 class MultipleChoiceResponse extends React.Component {
   render() {
+    const onSelect = () => {
+      this.props.onValidInput();
+    };
     return (
       <div>
         <div>
-          <input type="radio" id="yesBox" name="multiple" value="yes" />
+          <input
+            onClick={onSelect}
+            type="radio"
+            id="yesBox"
+            name="multiple"
+            value="yes"
+          />
           <label htmlFor="verygood">yes</label>
         </div>
         <div>
@@ -14,6 +23,7 @@ class MultipleChoiceResponse extends React.Component {
         </div>
         <div>
           <input
+            onClick={onSelect}
             type="radio"
             id="notApplicableBox"
             name="multiple"

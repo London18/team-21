@@ -8,11 +8,11 @@ class Survey extends Component {
     questions: [
       {
         text: "How are you feeling?",
-        type: "scale",
+        type: "openText",
       },
       {
         text: "How was your day?",
-        type: "scale",
+        type: "multipleChioce",
       },
       {
         text: "Third question?",

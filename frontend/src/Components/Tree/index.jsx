@@ -38,7 +38,12 @@ class Tree extends React.Component {
           <img
             src={
               "./images/tree/frame_" +
-              pad(localStorage.getItem("numberOfQuestions")) +
+              pad(
+                Math.min(
+                  4 * parseInt(localStorage.getItem("numberOfQuestions")),
+                  100,
+                ),
+              ) +
               "_delay-0.05s.png"
             }
             alt="Progress tree"
